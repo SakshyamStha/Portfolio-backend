@@ -1,5 +1,3 @@
-import { JsonWebTokenError } from "jsonwebtoken";
-
 class ErrorHandler extends Error {
   constructor(messafe, StatusCode) {
     super(message);
