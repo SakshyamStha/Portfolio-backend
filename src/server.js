@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const { default: dbconnection } = require('./database/dbConn');
 require('dotenv').config();
 const cloudinary= require('cloudinary');
+const { errorMiddleware } = require('./middleware/error');
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use(
 );
 
 dbconnection();
+app.use(errorMiddleware);
 
 cloudinary.v2.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
