@@ -1,6 +1,6 @@
-import { catchAsyncErrors } from "../middleware/errorHandler";
-import ErrorHandler from "../middleware/error";
-import { Message } from "../models/Message";
+import { catchAsyncErrors } from "../middleware/errorHandler.js";
+import ErrorHandler from "../middleware/error.js";
+import { Message } from "../models/Message.js";
 
 export const sendMessage = catchAsyncErrors(async(req, res, next)=>{
     const {senderName, subject, message} = req.body;
@@ -14,3 +14,4 @@ export const sendMessage = catchAsyncErrors(async(req, res, next)=>{
         data
     })
 })
+

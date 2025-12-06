@@ -1,13 +1,13 @@
 class ErrorHandler extends Error {
-  constructor(messafe, StatusCode) {
+  constructor(message, statusCode) {
     super(message);
-    this.StatusCode = StatusCode;
+    this.statusCode = statusCode;
   }
 }
 
 export const errorMiddleware = (err, req, res, next) => {
   err.message = err.message || "Internal Server Error";
-  err.StatusCode = err.statusCode || 500;
+  err.statusCode = err.statusCode || 500;
 
   if (err.code === 11000) {
     const message = `Duplicate ${Object.keys(err.value)} Entered`;
@@ -33,7 +33,7 @@ export const errorMiddleware = (err, req, res, next) => {
     : err.message;
   return res.status(err.statusCode).json({
     success: false,
-    messae: errorMessage,
+    message: errorMessage,
   });
 };
 
